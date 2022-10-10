@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center align-items-center container mt-5">
+  <div class="row mt-5">
+    <div class="card col-lg-4 py-5 px-3 m-auto">
+        <h5 class="m-0">Mobile phone verification</h5><span class="mobile-text">Enter the code we just send on your mobile phone <b class="text-danger">+91 86684833</b></span>
+        <form action="/verify-otp" method="post">
+        <div class="d-flex flex-row mt-5">
+            <input type="text" class="form-control" oninput='digitValidate(this)' onkeyup='tabChange(1)' maxlength=1 name="otp1" autofocus="">
+            <input type="text" class="form-control" oninput='digitValidate(this)' onkeyup='tabChange(2)' maxlength=1 name="otp2">
+            <input type="text" class="form-control" oninput='digitValidate(this)' onkeyup='tabChange(3)' maxlength=1 name="otp3">
+            <input type="text" class="form-control" oninput='digitValidate(this)' onkeyup='tabChange(4)' maxlength=1 name="otp4">
+        </div>
+  
+        <div class="text-center mt-5">
+          <input type="submit" value="Verify" style="width: fit-content;" class="btn btn-danger text-center">
+        </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+ <script>
+  let digitValidate = function(ele){
+    console.log(ele.value);
+    ele.value = ele.value.replace(/[^0-9]/g,'');
+  }
+
+  let tabChange = function(val){
+      let ele = document.querySelectorAll('input');
+      if(ele[val-1].value != ''){
+        ele[val].focus()
+      }else if(ele[val-1].value == ''){
+        ele[val-2].focus()
+      }   
+  }
+
+  </script>
